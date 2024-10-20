@@ -1,4 +1,4 @@
-package com.fdmgroup.hangman;
+package com.hangman;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class Hangman {
 			}
 		}
 				
-		System.out.println(randomWord);
+		//System.out.println(randomWord);
 		//System.out.println(wordLength);
 		correctWord = randomWord.toUpperCase();
 		
@@ -50,8 +50,8 @@ public class Hangman {
 			System.out.println();
 			System.out.println("You have " + guessCount + " guesses left.");
 			System.out.print("Your guess: ");
-			String inputGuess = scanner.next();
-			Character firstCharGuess = inputGuess.charAt(0);
+			String inputGuessLetter = scanner.next();
+			Character firstCharGuess = inputGuessLetter.charAt(0);
 		
 			if (guessLetters.contains(Character.toUpperCase(firstCharGuess))) {
 				System.out.println("Please input another letter.");
@@ -61,7 +61,7 @@ public class Hangman {
 			guessLetters.add(Character.toUpperCase(firstCharGuess));
 			
 			
-			if (correctWord.contains(inputGuess.toUpperCase())){
+			if (correctWord.contains(inputGuessLetter.toUpperCase())){
 				System.out.println("That guess is correct.");
 				
 				System.out.print("The word now looks like this: ");
@@ -70,7 +70,7 @@ public class Hangman {
 					if (guessLetters.contains(correctWord.charAt(j))) {
 						
 						System.out.print(correctWord.charAt(j));
-						rightCount ++;
+						rightCount++;
 					} else {
 						System.out.print("-");
 					}
@@ -82,15 +82,15 @@ public class Hangman {
 					break;
 				}	
 	
-			}else {
-				System.out.println("There are no " + inputGuess.toUpperCase() + "'s in the word.");
-				guessCount --;
+			} else {
+				System.out.println("There are no " + inputGuessLetter.toUpperCase() + "'s in the word.");
+				guessCount--;
 				if (guessCount == 0) {
 					System.out.println("You are completely hung.");
 					System.out.println("The word was " + correctWord);
 					System.out.println("You lose.");
 					break;
-				}else{
+				} else {
 					System.out.print("The word now looks like this: ");
 
 					for (int j = 0; j < wordLength; j++) {
